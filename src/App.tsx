@@ -1,9 +1,7 @@
-import React from 'react';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import DashboardPage from './Pages/Dashboard.page';
-import LoginPage from './Pages/Login.page';
-import RecordingsPage from './Pages/Recordings.page';
-import SignupPage from './Pages/Signup.page';
+import React from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import AppContainer from "./Pages/AppContainer";
+import AuthPage from "./Pages/Auth.page";
 
 function App() {
   return (
@@ -12,17 +10,14 @@ function App() {
         <Route path="/" exact>
           <Redirect to="/login"></Redirect>
         </Route>
-        <Route path="/login">
-          <LoginPage></LoginPage>
+        <Route path={["/login", "/signup"]}>
+          <AuthPage></AuthPage>
         </Route>
-        <Route path="/signup">
-          <SignupPage></SignupPage>
+        <Route path={["/dashboard", "/recordings"]}>
+          <AppContainer />
         </Route>
-        <Route path="/dashboard">
-          <DashboardPage></DashboardPage>
-        </Route>
-        <Route path="/recordings">
-          <RecordingsPage></RecordingsPage>
+        <Route>
+
         </Route>
       </Switch>
     </BrowserRouter>
