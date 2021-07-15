@@ -10,10 +10,10 @@ const Auth: FC<Props> = (props) => {
   return (
     <div className="flex justify-between">
       <Switch>
-        <Route path="/login">
+        <Route path="/login" exact>
           <LoginPage></LoginPage>
         </Route>
-        <Route path="/signup">
+        <Route path="/signup" exact>
           <SignupPage></SignupPage>
         </Route>
       </Switch>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import AuthHero from "../Components/AuthHero";
 
 interface Props {}
 
@@ -13,7 +12,6 @@ const Login: React.FC<Props> = (props) => {
           <span className="text-blue-500">Click Here</span>
         </Link>
       </div>
-      <AuthHero></AuthHero>
     </div>
   );
 };
