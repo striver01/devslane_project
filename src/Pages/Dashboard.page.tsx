@@ -5,7 +5,7 @@ interface Props{
  
 }
 
- const Dashboard: FC<Props> = (props) => {
+ const Dashboard : FC<Props> = (props) => {
   return(
     <div>
       This is Dashboard page.
