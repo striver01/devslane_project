@@ -33,6 +33,9 @@ module.exports = {
       },
       letterSpacing: {
         'widem': "0.0312rem"
+      },
+      screens: {
+        mdx: '1000px'
       }
     },
   },

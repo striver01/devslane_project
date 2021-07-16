@@ -11,7 +11,7 @@ interface Props{
         console.log("AuthHero Rendering for the first time");
      },[]);
   return(
-    <div className="h-screen w-1/2 bg-black text-white">
+    <div className="h-screen flex-1 hidden mdx:block  bg-black text-white">
       Logo will go Here.
     </div>
   );

@@ -8,6 +8,7 @@ const ToggleButton: React.FC<Props> = (props) => {
   return (
     <div>
       <Switch
+      type="button"
         checked={enabled}
         onChange={setEnabled}
         className={`${
@@ -15,7 +16,7 @@ const ToggleButton: React.FC<Props> = (props) => {
         } relative inline-flex items-center h-4.5 rounded-full w-8.75`}
       >
         <span className="sr-only">Enable notifications</span>
-        <span
+        <span 
           className={`${
             enabled ? "translate-x-4" : "translate-x-1"
           } inline-block w-3.5 h-3.5 transform bg-Primary rounded-full`}
