@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { FiLoader } from "react-icons/fi"
 import { useHistory } from "react-router-dom";
 
+
 interface Props {
+  isSubmitting: boolean;
   data: object;
-  emailError: string;
-  passError: string;
 }
 
 const RectBlueButton: React.FC<Props> = (props) => {
@@ -16,7 +16,8 @@ const RectBlueButton: React.FC<Props> = (props) => {
     <button
       onClick={(event) => {
         event.preventDefault();
-        if(props.emailError || props.passError){
+        console.log(submitting, props.isSubmitting);
+        if(!props.isSubmitting){
             console.log('Submission Failed! Please try again.')
             return;
         }

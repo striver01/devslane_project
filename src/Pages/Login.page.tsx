@@ -1,24 +1,31 @@
-import { FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 import RectBlueButton from "../Components/RectBlueButton";
 import ToggleButton from "../Components/ToggleButton";
+import * as yup from "yup";
+import { useFormik } from "formik";
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
-  const [data,setData] = useState({email: "", password: ""})
-  const [touched,setTouched] = useState({email: false, password: false})
-
-  let emailError="";
-  let passError="";
-  if(!data.email) emailError="Field is empty!";
-  else if(!data.email.endsWith("@gmail.com")) emailError="Enter a valid Email id!";
-
-  if(!data.password) passError="Field is empty!";
-  else if(data.password.length < 8) passError="Password should contain atleast 8 charachters.";
-
-    return (
-    <form className="flex flex-col justify-center px-11 py-3 h-screen border border-red-600 items-center flex-1 tracking-widem font-nunito" onSubmit={(event)=>{console.log(data); event.preventDefault();}}>
+  const myform = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: yup.object().shape({
+      email: yup.string().required().email(),
+      password: yup.string().required().min(8),
+    }),
+    onSubmit: () => {
+      console.log("form submittimg ",myform.values);
+    }
+  });
+  return (
+    <form
+      className="flex flex-col justify-center px-11 py-3 h-screen border border-red-600 items-center flex-1 tracking-widem font-nunito"
+      onSubmit={myform.handleSubmit}
+    >
       <div>
         <h1 className="text-4.5xl font-medium mb-2">
           Log In to <span className="text-Primary font-semibold">CORK</span>
@@ -54,16 +61,14 @@ const Login: FC<Props> = (props) => {
             name="email"
             placeholder="Email"
             autoComplete="email"
-            value={data.email}
-            onChange={(event) => {
-              setData({...data,email: event.target.value});
-            }}
-            onBlur={(event) => {
-              setTouched({...touched, email: true});
-            }}
+            value={myform.values.email}
+            onChange={myform.handleChange}
+            onBlur={myform.handleBlur}
             className="w-97 text-base font-semibold focus:border-Primary text-gray-900 px-9 pb-2.5 pt-2.5 outline-none border-b border-gray-300 placeholder-gray-300 placeholder-opacity-100"
           ></input>
-          {touched.email && <div className="text-red-500 text-sm">{emailError}</div>}
+          {myform.touched.email && (
+            <div className="text-red-500 text-sm">{myform.errors.email}</div>
+          )}
         </div>
         <div className="relative pb-6 pt-3 mb-2 ">
           <label className="absolute top-5">
@@ -88,23 +93,26 @@ const Login: FC<Props> = (props) => {
             placeholder="Password"
             name="password"
             autoComplete="Password"
-            value={data.password}
-            onChange={(event) => {
-              setData({...data, password: event.target.value});
-            }}
-            onBlur={(event) => {
-              setTouched({...touched, password: true});
-            }}
+            value={myform.values.password}
+            onChange={myform.handleChange}
+            onBlur={myform.handleBlur}
             className="w-97 text-base font-semibold focus:border-Primary text-gray-900 px-9 pb-2.5 pt-2.5 border-b-2 outline-none placeholder-gray-300 placeholder-opacity-100"
           ></input>
-            {touched.password && <div className="text-red-500 text-sm">{passError}</div>}
+          {myform.touched.password && (
+            <div className="text-red-500 text-sm">{myform.errors.password}</div>
+          )}
         </div>
         <div className="justify-between items-center flex mb-14">
           <div className="flex space-x-2">
             <h3 className="text-sm font-semibold">Show Password</h3>
             <ToggleButton></ToggleButton>
           </div>
-          <RectBlueButton data={data} emailError={emailError} passError={passError}>Log In</RectBlueButton>
+          <RectBlueButton
+            data={myform.values}
+            isSubmitting={!myform.errors.email && !myform.errors.password}
+          >
+            Log In
+          </RectBlueButton>
         </div>
         <div className="flex justify-center items-center text-sm space-x-2 mb-2">
           <input type="checkbox" className="h-3.5 w-3.5"></input>
@@ -130,3 +138,5 @@ const Login: FC<Props> = (props) => {
 };
 Login.defaultProps = {};
 export default memo(Login);
+
+
