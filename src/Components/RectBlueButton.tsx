@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import { FC, memo, useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import { useHistory } from "react-router-dom";
 
 interface Props {
-  isSubmitting: boolean;
-  data: object;
+  isSubmitting?: boolean;
+  pass?: string;
+  email?: string;
+  data?: object;
   className?: string;
+  children?: string;
 }
 
-const RectBlueButton: React.FC<Props> = ({
+const RectBlueButton: FC<Props> = ({
   isSubmitting,
   data,
   children,
   className,
+  email,
+  pass,
 }) => {
   const [submitting, setSubmitting] = useState(false);
   const history = useHistory();
@@ -21,8 +26,7 @@ const RectBlueButton: React.FC<Props> = ({
       <button
         onClick={(event) => {
           event.preventDefault();
-          // console.log(submitting, isSubmitting);
-          if (!isSubmitting) {
+          if (!isSubmitting || (email!=="" && pass!=="")) {
             console.log("Submission Failed! Please try again.");
             return;
           }
@@ -45,4 +49,4 @@ const RectBlueButton: React.FC<Props> = ({
   );
 };
 RectBlueButton.defaultProps = {};
-export default RectBlueButton;
+export default memo(RectBlueButton);
