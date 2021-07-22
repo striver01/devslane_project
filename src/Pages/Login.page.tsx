@@ -24,7 +24,7 @@ const Login: FC<Props> = (props) => {
   });
   return (
     <form
-      className="flex flex-col justify-center pt-10 px-11 pb-3 h-full items-center flex-1 tracking-widem font-nunito"
+      className="flex flex-col justify-center 2xl:pt-10 px-11 2xl:pb-3 py-3 h-full items-center flex-1 tracking-widem font-nunito"
       onSubmit={myform.handleSubmit}
     >
       <div className="h-full">

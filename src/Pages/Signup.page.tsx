@@ -34,7 +34,7 @@ const Signup: FC<Props> = (props) => {
     //     <span className="text-blue-500">Go to Dashboard</span>
     //   </Link>
     <form
-      className="flex flex-col justify-center px-11 py-10 h-full items-center flex-1 tracking-widem font-nunito"
+      className="flex flex-col justify-center 2xl:pt-10 px-11 2xl:pb-3 py-3 h-full items-center flex-1 tracking-widem font-nunito"
       onSubmit={myform.handleSubmit}
     >
       <div className="h-full">
