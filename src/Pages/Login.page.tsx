@@ -24,10 +24,10 @@ const Login: FC<Props> = (props) => {
   });
   return (
     <form
-      className="flex flex-col justify-center px-11 py-3 h-screen border border-red-600 items-center flex-1 tracking-widem font-nunito"
+      className="flex flex-col justify-center pt-10 px-11 pb-3 h-full items-center flex-1 tracking-widem font-nunito"
       onSubmit={myform.handleSubmit}
     >
-      <div>
+      <div className="h-full">
         <h1 className="text-4.5xl font-medium mb-2">
           Log In to <span className="text-Primary font-semibold">CORK</span>
         </h1>
@@ -41,7 +41,7 @@ const Login: FC<Props> = (props) => {
         </p>
         <div className="relative pb-6 pt-3">
           <label className="absolute top-5">
-            <svg
+          <svg
               className="stroke-current text-Primary"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -95,7 +95,7 @@ const Login: FC<Props> = (props) => {
             touched={myform.touched.password}
           ></Input>
         </div>
-        <div className="justify-between items-center flex mb-14">
+        <div className="justify-between items-start flex mb-14 flex-col sm:flex-row space-y-2 sm:space-y-0">
           <div className="flex space-x-2">
             <h3 className="text-sm font-semibold">Show Password</h3>
             <ToggleButton></ToggleButton>
