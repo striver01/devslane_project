@@ -4,6 +4,7 @@ import RectBlueButton from "../Components/RectBlueButton";
 import ToggleButton from "../Components/ToggleButton";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import Input from "../Components/Input";
 
 interface Props {}
 
@@ -18,8 +19,8 @@ const Login: FC<Props> = (props) => {
       password: yup.string().required().min(8),
     }),
     onSubmit: () => {
-      console.log("form submittimg ",myform.values);
-    }
+      console.log("form submittimg ", myform.values);
+    },
   });
   return (
     <form
@@ -56,19 +57,15 @@ const Login: FC<Props> = (props) => {
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </label>
-          <input
+          <Input
+            id="email"
             type="email"
-            name="email"
             placeholder="Email"
             autoComplete="email"
-            value={myform.values.email}
-            onChange={myform.handleChange}
-            onBlur={myform.handleBlur}
-            className="w-97 text-base font-semibold focus:border-Primary text-gray-900 px-9 pb-2.5 pt-2.5 outline-none border-b border-gray-300 placeholder-gray-300 placeholder-opacity-100"
-          ></input>
-          {myform.touched.email && (
-            <div className="text-red-500 text-sm">{myform.errors.email}</div>
-          )}
+            {...myform.getFieldProps("email")}
+            error={myform.errors.email}
+            touched={myform.touched.email}
+          ></Input>
         </div>
         <div className="relative pb-6 pt-3 mb-2 ">
           <label className="absolute top-5">
@@ -88,19 +85,15 @@ const Login: FC<Props> = (props) => {
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
             </svg>
           </label>
-          <input
+          <Input
+            id="password"
             type="password"
             placeholder="Password"
-            name="password"
-            autoComplete="Password"
-            value={myform.values.password}
-            onChange={myform.handleChange}
-            onBlur={myform.handleBlur}
-            className="w-97 text-base font-semibold focus:border-Primary text-gray-900 px-9 pb-2.5 pt-2.5 border-b-2 outline-none placeholder-gray-300 placeholder-opacity-100"
-          ></input>
-          {myform.touched.password && (
-            <div className="text-red-500 text-sm">{myform.errors.password}</div>
-          )}
+            autoComplete="password"
+            {...myform.getFieldProps("password")}
+            error={myform.errors.password}
+            touched={myform.touched.password}
+          ></Input>
         </div>
         <div className="justify-between items-center flex mb-14">
           <div className="flex space-x-2">
@@ -138,5 +131,3 @@ const Login: FC<Props> = (props) => {
 };
 Login.defaultProps = {};
 export default memo(Login);
-
-
