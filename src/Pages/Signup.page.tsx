@@ -26,7 +26,7 @@ const Signup: FC<Props> = (props) => {
   });
   return (
     <form
-      className="flex flex-col justify-center 2xl:pt-10 px-11 2xl:pb-3 py-3 h-full items-center flex-1 tracking-widem font-nunito"
+      className="flex flex-col justify-center 2xl:pt-10 flex-shrink-0 2xl:pb-3 py-3 h-full items-center flex-1 tracking-widem font-nunito"
       onSubmit={myform.handleSubmit}
     >
       <div className="h-full">
@@ -134,9 +134,12 @@ const Signup: FC<Props> = (props) => {
             <h3 className="text-sm font-semibold">Show Password</h3>
             <ToggleButton></ToggleButton>
           </div>
+          console.log(myform.errors.email,myform.errors.password);
           <RectBlueButton
             data={myform.values}
-            isSubmitting={!myform.errors.email && !myform.errors.password}
+            email={myform.values.email}
+            pass={myform.values.password}
+            isSubmitting={!myform.errors.email && !myform.errors.password && !myform.errors.username}
           >
             Get Started
           </RectBlueButton>
