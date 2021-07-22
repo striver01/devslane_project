@@ -25,14 +25,6 @@ const Signup: FC<Props> = (props) => {
     },
   });
   return (
-    // <div className="w-1/2 border-4 border-red-600">
-    //   This is Signup page. Already have an account.{" "}
-    //   <Link to="/login">
-    //     <span className="text-blue-500">Click Here</span>
-    //   </Link>
-    //   <Link to="/recordings">
-    //     <span className="text-blue-500">Go to Dashboard</span>
-    //   </Link>
     <form
       className="flex flex-col justify-center 2xl:pt-10 px-11 2xl:pb-3 py-3 h-full items-center flex-1 tracking-widem font-nunito"
       onSubmit={myform.handleSubmit}
@@ -133,7 +125,8 @@ const Signup: FC<Props> = (props) => {
         <div className="flex justify-start items-center text-sm space-x-3 mb-2 pb-3">
           <input type="checkbox" className="h-3.5 w-3.5"></input>
           <label className="text-gray-400 tracking-wider text-sm font-thin">
-          I agree to the <span className="text-Primary">  terms and conditions </span>
+            I agree to the{" "}
+            <span className="text-Primary"> terms and conditions </span>
           </label>
         </div>
         <div className="justify-between items-start sm:items-center flex flex-col sm:flex-row mb-14 space-y-4 sm:space-y-0">
@@ -159,7 +152,6 @@ const Signup: FC<Props> = (props) => {
         </p>
       </div>
     </form>
-    // </div>
   );
 };
 Signup.defaultProps = {};
