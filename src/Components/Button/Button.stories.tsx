@@ -7,7 +7,7 @@ const Xyz = {
   argTypes: {
     theme: {
       options: ["primary", "secondary", "warning", "danger", "success"],
-      control: { type: "select" }, // Automatically inferred when 'options' is defined
+      control: { type: "select" }, 
     },
     base: {
       options: ["solid", "outline"],
