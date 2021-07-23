@@ -1,14 +1,17 @@
 import { FC, memo } from "react";
-import { Link } from "react-router-dom";
-import RectBlueButton from "../Components/RectBlueButton";
+import { Link, useHistory } from "react-router-dom";
 import ToggleButton from "../Components/ToggleButton";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Input from "../Components/Input";
+import Button from "../Components/Button/Button";
+import Input from "../Components/Input/Input";
+import { BiLoaderAlt } from "react-icons/bi";
+
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
+  const history = useHistory();
   const myform = useFormik({
     initialValues: {
       email: "",
@@ -20,6 +23,10 @@ const Login: FC<Props> = (props) => {
     }),
     onSubmit: () => {
       console.log("form submittimg ", myform.values);
+      setTimeout(()=>{
+        console.log('Form Submitted Successfull!');
+        history.push('/dashboard');
+      },2000);
     },
   });
   return (
@@ -41,7 +48,7 @@ const Login: FC<Props> = (props) => {
         </p>
         <div className="relative pb-6 pt-3">
           <label className="absolute top-5">
-          <svg
+            <svg
               className="stroke-current text-Primary"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -100,12 +107,10 @@ const Login: FC<Props> = (props) => {
             <h3 className="text-sm font-semibold">Show Password</h3>
             <ToggleButton></ToggleButton>
           </div>
-          <RectBlueButton
-            data={myform.values}
-            isSubmitting={!myform.errors.email && !myform.errors.password}
-          >
-            Log In
-          </RectBlueButton>
+          <div className="flex space-x-2 items-center">
+            <Button theme="primary">Sign In</Button>
+            {myform.isSubmitting && <BiLoaderAlt className="animate-spin"></BiLoaderAlt>}
+          </div>
         </div>
         <div className="flex justify-center items-center text-sm space-x-2 mb-2">
           <input type="checkbox" className="h-3.5 w-3.5"></input>

@@ -11,7 +11,11 @@ module.exports = {
         "3.75": "15px"
       },
       colors: {
-        Primary: "#4361ee",
+        'Primary': '#4361ee',
+        'success': '#1abc9c',
+        'danger': '#e7515a',
+        'warning': '#e2a03f',
+        'secondary': '#3b3f5c',
       },
       padding: {
         "2.5": "10px",
@@ -29,7 +33,11 @@ module.exports = {
         "3.5": "14px",
       },
       boxShadow: {
-        '3xl': '0 10px 20px -10px #4361ee',
+        'Primary': '0 10px 20px -10px #4361ee',
+        'success': '0 10px 20px -10px #1abc9c',
+        'danger': '0 10px 20px -10px #e7515a',
+        'warning': '0 10px 20px -10px #e2a03f',
+        'secondary': '0 10px 20px -10px #3b3f5c',
       },
       letterSpacing: {
         'widem': "0.0312rem"
