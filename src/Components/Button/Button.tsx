@@ -6,7 +6,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
 }
 
-const Button: FC<Props> = ({ children, className, theme, base, ...rest }) => {
+export const Button: FC<Props> = ({ children, className, theme, base, ...rest }) => {
   let themeClasses = "";
   if (base === "solid") {
     if (theme === "primary")

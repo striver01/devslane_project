@@ -6,12 +6,15 @@ import { useFormik } from "formik";
 import Button from "../Components/Button/Button";
 import Input from "../Components/Input/Input";
 import { BiLoaderAlt } from "react-icons/bi";
+import { login } from "../api";
 
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
+
   const history = useHistory();
+
   const myform = useFormik({
     initialValues: {
       email: "",
@@ -21,12 +24,15 @@ const Login: FC<Props> = (props) => {
       email: yup.string().required().email(),
       password: yup.string().required().min(8),
     }),
-    onSubmit: () => {
-      console.log("form submittimg ", myform.values);
-      setTimeout(()=>{
-        console.log('Form Submitted Successfull!');
-        history.push('/dashboard');
-      },2000);
+    onSubmit: (data) => {
+      // console.log("form submittimg ", myform.values);
+      // setTimeout(()=>{
+      //   console.log('Form Submitted Successfull!');
+      //   history.push('/dashboard');
+      // },2000);
+      login(data).then(() => {
+        history.push("/dashboard");
+      });
     },
   });
   return (
