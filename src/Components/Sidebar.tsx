@@ -16,7 +16,6 @@ const Sidebar: React.FC<Props> = (props) => {
       >
         Logout
       </Button>
-      <Button>Search</Button>
     </div>
   );
 };
