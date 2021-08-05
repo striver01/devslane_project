@@ -45,17 +45,17 @@ const Dashboard: FC<Props> = (props) => {
           {/* <Button onClick={() => setUserData(ar)}>Search</Button> */}
         </form>
         <div className="space-y-5">
-        {userData.map((data: any, key: number) => {
-          return (
-            <CardList
-              description={data.description}
-              link={data.group_image_url}
-              key={key}
-            >
-              {data.name}
-            </CardList>
-          );
-        })}
+          {userData.map((data: any, key: number) => {
+            return (
+              <CardList
+                description={data.description}
+                link={data.group_image_url}
+                key={key}
+              >
+                {data.name}
+              </CardList>
+            );
+          })}
         </div>
       </div>
     </div>
