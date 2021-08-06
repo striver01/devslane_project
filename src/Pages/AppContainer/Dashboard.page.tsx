@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { fetchGroups } from "../Api/groups";
+import { fetchGroups } from "../../Api/groups";
+import CardList from "../../Components/CardList/CardList";
+import Input from "../../Components/Input/Input";
 // import Button from "../Components/Button/Button";
-import CardList from "../Components/CardList/CardList";
-import Input from "../Components/Input/Input";
+// import CardList from "../Components/CardList/CardList";
+// import Input from "../Components/Input/Input";
 
 interface Props {}
 

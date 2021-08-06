@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
-import ToggleButton from "../Components/ToggleButton";
+import ToggleButton from "../../Components/ToggleButton";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Input from "../Components/Input/Input";
-import Button from "../Components/Button/Button";
+import Input from "../../Components/Input/Input";
+import Button from "../../Components/Button/Button";
 import { BiLoaderAlt } from "react-icons/bi";
 
 interface Props {}
@@ -24,10 +24,10 @@ const Signup: FC<Props> = (props) => {
     }),
     onSubmit: () => {
       console.log("form submittimg ", myform.values);
-      setTimeout(()=>{
-        console.log('Form Submitted Successfull!');
-        history.push('/login');
-      },2000);
+      setTimeout(() => {
+        console.log("Form Submitted Successfull!");
+        history.push("/login");
+      }, 2000);
     },
   });
   return (
@@ -141,10 +141,12 @@ const Signup: FC<Props> = (props) => {
             <ToggleButton></ToggleButton>
           </div>
           <div>
-          <div className="flex space-x-2 items-center">
-            <Button theme="primary">Get Started</Button>
-            {myform.isSubmitting && <BiLoaderAlt className="animate-spin"></BiLoaderAlt>}
-          </div>
+            <div className="flex space-x-2 items-center">
+              <Button theme="primary">Get Started</Button>
+              {myform.isSubmitting && (
+                <BiLoaderAlt className="animate-spin"></BiLoaderAlt>
+              )}
+            </div>
           </div>
         </div>
         <p className="mt-24 text-sm text-center font-semibold text-gray-700">

@@ -1,12 +1,12 @@
 import { FC, memo } from "react";
 import { Link, useHistory } from "react-router-dom";
-import ToggleButton from "../Components/ToggleButton";
+import ToggleButton from "../../Components/ToggleButton";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Button from "../Components/Button/Button";
-import Input from "../Components/Input/Input";
+import Button from "../../Components/Button/Button";
+import Input from "../../Components/Input/Input";
 import { BiLoaderAlt } from "react-icons/bi";
-import { login } from "../Api/auth";
+import { login } from "../../Api/auth";
 
 interface Props {}
 
@@ -60,9 +60,7 @@ const Login: FC<Props> = (props) => {
               viewBox="0 0 24 24"
               fill="#acc4fc"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
             >
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
@@ -88,9 +86,7 @@ const Login: FC<Props> = (props) => {
               viewBox="0 0 24 24"
               fill="#acc4fc"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
             >
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
               <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
