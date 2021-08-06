@@ -6,13 +6,11 @@ import { useFormik } from "formik";
 import Button from "../Components/Button/Button";
 import Input from "../Components/Input/Input";
 import { BiLoaderAlt } from "react-icons/bi";
-import { login } from "../api";
-
+import { login } from "../Api/auth";
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
-
   const history = useHistory();
 
   const myform = useFormik({
@@ -115,7 +113,9 @@ const Login: FC<Props> = (props) => {
           </div>
           <div className="flex space-x-2 items-center">
             <Button theme="primary">Sign In</Button>
-            {myform.isSubmitting && <BiLoaderAlt className="animate-spin"></BiLoaderAlt>}
+            {myform.isSubmitting && (
+              <BiLoaderAlt className="animate-spin"></BiLoaderAlt>
+            )}
           </div>
         </div>
         <div className="flex justify-center items-center text-sm space-x-2 mb-2">

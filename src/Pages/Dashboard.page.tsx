@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { fetchGroups } from "../api";
+import { fetchGroups } from "../Api/groups";
 // import Button from "../Components/Button/Button";
 import CardList from "../Components/CardList/CardList";
 import Input from "../Components/Input/Input";
@@ -14,7 +14,7 @@ const Dashboard: FC<Props> = (props) => {
   const [userData, setUserData] = useState([]);
   // let ar:any;
   useEffect(() => {
-    fetchGroups({ status: "all-groups", query }).then((response) => {
+    fetchGroups({ status: "all-groups", query }).then((response: any) => {
       console.log(response);
       // ar = response;
       setUserData(response);

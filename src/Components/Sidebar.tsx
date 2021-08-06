@@ -1,5 +1,5 @@
 import React from "react";
-import { logout } from "../api";
+import { logout } from "../Api/auth";
 import Button from "./Button/Button";
 
 interface Props {}

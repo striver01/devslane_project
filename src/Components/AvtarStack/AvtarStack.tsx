@@ -21,7 +21,7 @@ const AvtarStack: FC<Props> = ({ stacksize }) => {
         return (
           <div className="-space-x-2">
             <img
-              className={`inline-block w-20 h-20 rounded-full border-2  border-white transform hover:-translate-y-2 duration-500 relative right-${
+              className={`inline w-20 h-20 rounded-full border-2  border-white transform hover:-translate-y-2 duration-500 relative right-${
                 key * 4
               }`}
               src={res}
