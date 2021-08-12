@@ -4,17 +4,19 @@ import AuthHero from "../../Components/AuthHero";
 import LoginPage from "./Login.page";
 import SignupPage from "./Signup.page";
 
-interface Props {}
+interface Props {
+  // onLogin: (user: User) => void;
+}
 
-const Auth: FC<Props> = (props) => {
+const Auth: FC<Props> = (Props) => {
   return (
     <div className="flex justify-between min-h-screen">
       <Switch>
         <Route path="/login" exact>
-          <LoginPage></LoginPage>
+          <LoginPage />
         </Route>
         <Route path="/signup" exact>
-          <SignupPage></SignupPage>
+          <SignupPage />
         </Route>
       </Switch>
       <AuthHero></AuthHero>

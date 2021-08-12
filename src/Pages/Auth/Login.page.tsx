@@ -7,17 +7,23 @@ import Button from "../../Components/Button/Button";
 import Input from "../../Components/Input/Input";
 import { BiLoaderAlt } from "react-icons/bi";
 import { login } from "../../Api/auth";
+import { useContext } from "react";
+import AppContext from "../../App.context";
+// import { setUser } from "../../App.context";
 
 interface Props {}
 
-const Login: FC<Props> = (props) => {
+const Login: FC<Props> = (Props) => {
   const history = useHistory();
+
+  const { setUser } = useContext(AppContext);
 
   const myform = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
+    isInitialValid: false,
     validationSchema: yup.object().shape({
       email: yup.string().required().email(),
       password: yup.string().required().min(8),
@@ -28,7 +34,8 @@ const Login: FC<Props> = (props) => {
       //   console.log('Form Submitted Successfull!');
       //   history.push('/dashboard');
       // },2000);
-      login(data).then(() => {
+      login(data).then((u) => {
+        setUser(u);
         history.push("/dashboard");
       });
     },
@@ -108,7 +115,13 @@ const Login: FC<Props> = (props) => {
             <ToggleButton></ToggleButton>
           </div>
           <div className="flex space-x-2 items-center">
-            <Button theme="primary">Sign In</Button>
+            <Button
+              theme="primary"
+              className="disabled:cursor-not-allowed disabled:bg-blue-300 disabled:shadow-none"
+              disabled={!myform.isValid}
+            >
+              Sign In
+            </Button>
             {myform.isSubmitting && (
               <BiLoaderAlt className="animate-spin"></BiLoaderAlt>
             )}

@@ -11,7 +11,7 @@ const CardList: FC<Props> = ({ description, link, children, ...rest }) => {
   return (
     <div className="bg-white hover:bg-gray-400 flex space-x-8 border-2 rounded-2xl px-5 py-2 cursor-pointer">
       <img className="rounded-full w-16 h-16" src={link} alt="None" />
-      <div>
+      <div className="w-4/5">
         <h1 className="text-lg">{children}</h1>
         <p className="text-base">{description}</p>
       </div>

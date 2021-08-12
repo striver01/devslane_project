@@ -9,7 +9,7 @@ interface LoginRequest {
 
 interface LoginResponse {
   data: { is_2fa_boolean: boolean };
-  user: User[];
+  user: User;
   token: string;
 }
 
@@ -25,6 +25,7 @@ export const login = (data: LoginRequest) => {
   return axios.post<LoginResponse>(url, data).then((response) => {
     console.log(response.data.token);
     localStorage.setItem(LS_Auth_Token, response.data.token);
+    return response.data.user;
     // const token = localStorage.getItem(LS_Login_Token);
     // console.log(token);
   });
@@ -32,4 +33,13 @@ export const login = (data: LoginRequest) => {
 
 export const logout = () => {
   localStorage.removeItem(LS_Auth_Token);
+};
+
+interface meResponse {
+  data: User;
+}
+
+export const me = () => {
+  const url = BASE_URL + "/me";
+  return axios.get<meResponse>(url).then((response) => response.data.data);
 };
